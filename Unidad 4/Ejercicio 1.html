@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+</head>
+
+<body>
+    <script>
+        distancia=prompt('Ingrese la ditancia a recorrer:','');
+        distancia = parseInt(distancia)
+
+        if(distancia < 1000){
+            document.write('Pie');
+        }else{
+            if(distancia >= 100000){
+                document.write('Avion');
+            }
+        }
+        if(distancia >= 1000 && distancia < 10000){
+            document.write('Bicicleta');
+        }
+        if(distancia >= 10000 && distancia < 30000){
+            document.write('Colectivo');
+        }
+        if(distancia >= 30000 && distancia < 100000){
+            document.write('Auto');
+        }
+    </script>
+</body>
+</html>
