@@ -13,7 +13,16 @@
         n4=prompt('Ingrese el primer numero:','');
         n5=prompt('Ingrese el primer numero:','');
         
+        var numeros = [n1,n2,n3,n4,n5];
         
+        for(j=i+1;j<numeros.length;j++){
+            var num = parseInt(numeros[j]);
+            if(num > max){
+                max = num;
+            }
+        }
+        
+        document.write('El numero mayor es: '+max);
 
     </script>
 </body>
