@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Ejercicio 2</title>
+    </head>
+    <body>
+        <script>
+            function crearBreak(){
+                var newBR = document.createElement('br');
+                document.body.appendChild(newBR);
+            }
+
+            function lecturaElemento(){
+                var cadena = document.getElementById('text1').value;
+                var caracteres = cadena.length;
+
+                var cadena_sin_espacio = cadena.replace(' ','');
+                var car_sin_espacio = cadena_sin_espacio.length;
+                
+                document.write('La cantidad de caracteres contando espacios es: ' + caracteres);
+                crearBreak();
+                document.write('La cantidad de caracteres sin contar espacios es: ' + car_sin_espacio);
+            }
+        </script>
+        <center>
+            <textarea id="text1"></textarea>
+            <br>
+            <button onclick="lecturaElemento()">Contar caracteres</button>
+        </center>
+    </body>
+</html>
