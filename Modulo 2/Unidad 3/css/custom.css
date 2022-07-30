@@ -1,0 +1,7 @@
+.hero{
+    background: url(../img/nebuluxs.png) no repeat;
+    background-size: cover;
+    height: 50vh;
+    min-height: 600px;
+    /*background-color: white;*/
+}
