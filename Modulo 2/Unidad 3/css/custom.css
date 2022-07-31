@@ -9,6 +9,7 @@
 .navbar{
     background-color: #000000;
 }
+
 .nav-link{
     color: white;
 }
@@ -19,4 +20,13 @@
 
 .active{
     color: white;
+}
+
+footer{
+    background-color: #000000;
+    color: white;
+}
+
+body{
+    background-color: #000000;
 }
