@@ -6,6 +6,10 @@
     color: white;
 }
 
+h2 .servicio{
+    color: white;
+}
+
 .navbar{
     background-color: #000000;
 }
@@ -30,3 +34,20 @@ footer{
 body{
     background-color: #000000;
 }
+
+label{
+    color: #ffffff;
+}
+
+.label-form{
+    color: #ffffff;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.scroll_section{
+    scroll-margin-top: 60px;
+}
+
