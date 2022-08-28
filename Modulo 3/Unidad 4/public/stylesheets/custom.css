@@ -1,0 +1,53 @@
+.hero{
+    background: url(../images/nebuluxs.png) no-repeat;
+    background-size: cover;
+    height: 70vh;
+    min-height: 650px;
+    color: white;
+}
+
+h2 .servicio{
+    color: white;
+}
+
+.navbar{
+    background-color: #000000;
+}
+
+.nav-link{
+    color: white;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+.active{
+    color: white;
+}
+
+footer{
+    background-color: #000000;
+    color: white;
+}
+
+body{
+    background-color: #000000;
+}
+
+label{
+    color: #ffffff;
+}
+
+.label-form{
+    color: #ffffff;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.scroll_section{
+    scroll-margin-top: 60px;
+}
+
