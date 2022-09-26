@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 require('dotenv').config();
+
 var pool = require('./models/db');
 
 var loginRouter = require('./routes/admin/login');

@@ -22,7 +22,8 @@ router.post('/', async(req, res, next) => {
                 layout: 'admin/layout',
                 error: true
             });
-        }}catch(error){
+        }}
+        catch(error){
             console.log(error);
         }
 });
