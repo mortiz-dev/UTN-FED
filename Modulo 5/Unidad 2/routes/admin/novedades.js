@@ -11,4 +11,10 @@ router.get('/', async function(req, res, next) {
     });
 });
 
+router.get('/eliminar/:Id', async(req, res, next) => {
+    var Id = req.params.Id;
+    await serviciosModel.deleteServicioById(Id);
+    res.redirect('/admin/novedades');
+});
+
 module.exports = router;
