@@ -56,50 +56,17 @@
   <div class="col-lg-8 offset-lg-2">
     <h2 class="servicio">Servicios</h2>
     <div class="row rows-cols-1 row-cols-md-4 g-4">
+      {{#each servicios}}
       <div class="col">
         <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
+          <img src="{{ ImagenServicio }}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Servicio 1</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt ut labore et
-              dolore magna aliqua.</p>
+            <h5 class="card-title">{{TituloServicio}}</h5>
+            <p class="card-text">{{ DescripcionServicio }}</p>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Servicio 2</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt ut labore et
-              dolore magna aliqua.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Servicio 3</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt ut labore et
-              dolore magna aliqua.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Servicio 4</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt ut labore et
-              dolore magna aliqua.</p>
-          </div>
-        </div>
-      </div>
+      {{/each}}
     </div>
   </div>
 </div>

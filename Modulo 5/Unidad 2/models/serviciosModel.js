@@ -2,7 +2,7 @@ var pool = require('./db');
 
 async function getServicios(){
     try {
-        var query = "select * from servicios order by Id";
+        var query = "select * from servicios";
         var rows = await pool.query(query);
         return rows;
     }
