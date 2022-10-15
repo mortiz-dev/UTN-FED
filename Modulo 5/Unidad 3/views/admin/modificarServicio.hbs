@@ -1,0 +1,26 @@
+<div class="container" style="margin:50px auto">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h3>Modificar servicio</h3>
+            <form method="post" action="/admin/novedades/modificar">
+                <input type="hidden" name="Id" value="{{servicio.Id}}">
+                <div class="form-group">
+                    <label for="TituloServicio">Título</label>
+                    <input type="text" class="form-control" id="TituloServicio" name="TituloServicio" value="{{servicio.TituloServicio}}">
+                </div>
+                <div class="form-group">
+                    <label for="DescripcionServicio">Descripción</label>
+                    <textarea class="form-control" id="DescripcionServicio" name="DescripcionServicio" rows="3">{{servicio.DescripcionServicio}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="ImagenServicio">Link a imagen</label>
+                    <input type="text" class="form-control" id="ImagenServicio" name="ImagenServicio" value="{{servicio.ImagenServicio}}">
+                </div>
+                <button type="submit" class="btn btn-primary">Modificar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{#if error}}
+    <h5> {{ message }}</h5>
+{{/if}}

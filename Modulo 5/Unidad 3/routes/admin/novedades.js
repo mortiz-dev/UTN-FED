@@ -52,4 +52,34 @@ router.post('/agregar', async(req, res, next) => {
     }
 });
 
+router.get('/modificar/:Id', async(req, res, next) => {
+    let Id = req.params.Id;
+    let servicio = await serviciosModel.getServicioById(Id);
+    res.render('admin/modificarServicio',{
+        layout: 'admin/layout',
+        servicio
+    });
+});
+
+router.post('/modificar', async(req, res, next) => {
+    try{
+        var Id = req.body.Id;
+        var servicio = {
+            TituloServicio: req.body.TituloServicio,
+            DescripcionServicio: req.body.DescripcionServicio,
+            ImagenServicio: req.body.ImagenServicio
+        }
+        await serviciosModel.updateServicioById(Id, servicio);
+        res.redirect('/admin/novedades');
+    }
+    catch (error) {
+        console.log(error);
+        res.render('admin/modificarServicio',{
+            layout: 'admin/layout',
+            error: true,
+            mensaje: 'Ocurrió un error'
+            });
+    }
+});
+
 module.exports = router;

@@ -33,4 +33,27 @@ async function insertServicio(servicio){
     }
 }
 
-module.exports = {getServicios, deleteServicioById, insertServicio};
+async function getServicioById(Id){
+    try {
+        var query = "select * from servicios where Id = ?";
+        var rows = await pool.query(query, [Id]);
+        return rows[0];
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function updateServicioById(Id, servicio){
+    try {
+        var query = "update servicios set ? where Id = ?";
+        var rows = await pool.query(query, [servicio, Id]);
+        return rows;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {getServicios, deleteServicioById, insertServicio, getServicioById
+    , updateServicioById};
