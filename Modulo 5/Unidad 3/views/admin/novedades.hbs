@@ -1,0 +1,39 @@
+<div class="container" style="margin:50px auto">
+    <div class="row">
+        <div class="col-7">
+            <h3>Listado de servicios</h3>
+        </div>
+        <div class="col-2 text right">
+            <a href="/admin/novedades/agregar" class="btn btn-success"> <i class="fa fa-plus"></i>Nuevo</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Link a imagen</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each servicios}}
+                    <tr>
+                        <th scope="row">{{Id}}</th>
+                        <td>{{TituloServicio}}</td>
+                        <td>{{DescripcionServicio}}</td>
+                        <td>{{ImagenServicio}}</td>
+                        <td>
+                            <a href="#" class="btn btn-primary"> <i class="fa fa-edit"></i></a>
+                            <a href="/admin/novedades/eliminar/{{Id}}" class="btn btn-danger"> <i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
