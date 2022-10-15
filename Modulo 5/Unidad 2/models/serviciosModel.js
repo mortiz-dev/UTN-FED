@@ -22,4 +22,15 @@ async function deleteServicioById(Id){
     }
 }
 
-module.exports = {getServicios, deleteServicioById};
+async function insertServicio(servicio){
+    try {
+        var query = "insert into servicios set ?";
+        var rows = await pool.query(query, [servicio]);
+        return rows;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {getServicios, deleteServicioById, insertServicio};
