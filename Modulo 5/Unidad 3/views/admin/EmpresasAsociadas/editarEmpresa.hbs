@@ -1,0 +1,26 @@
+<div class="container" style="margin:50px auto">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h3>Modificar Empresa asociada</h3>
+            <form method="post" action="/admin/empresasAsociadas/modificar">
+                <input type="hidden" name="Id" value="{{empresa.Id}}">
+                <div class="form-group">
+                    <label for="NombreEmpresa">Nombre empresa</label>
+                    <input type="text" class="form-control" id="NombreEmpresa" name="NombreEmpresa" value="{{empresa.NombreEmpresa}}">
+                </div>
+                <div class="form-group">
+                    <label for="DescripcionServicio">Descripción empresa</label>
+                    <textarea class="form-control" id="DescripcionEmpresa" name="DescripcionEmpresa" rows="3">{{empresa.DescripcionEmpresa}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="ImagenEmpresa">Link a imagen</label>
+                    <input type="text" class="form-control" id="ImagenEmpresa" name="ImagenEmpresa" value="{{empresa.ImagenEmpresa}}">
+                </div>
+                <button type="submit" class="btn btn-primary">Modificar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{#if error}}
+    <h5> {{ message }}</h5>
+{{/if}}

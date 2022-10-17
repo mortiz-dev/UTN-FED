@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
 var serviciosModel = require('./../models/serviciosModel');
+var empresasModel = require('./../models/empresasAsociadasModel');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   var servicios = await serviciosModel.getServicios();
-  res.render('index', {servicios});
+  var empresas = await empresasModel.getempresasAsociadass();
+  res.render('index', {servicios, empresas});
 });
 
 router.post('/', async(req, res, next) => {

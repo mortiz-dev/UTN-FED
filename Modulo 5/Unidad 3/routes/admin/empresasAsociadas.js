@@ -14,7 +14,7 @@ router.get('/', async function(req, res, next) {
 router.get('/eliminar/:Id', async(req, res, next) => {
     var Id = req.params.Id;
     await empresasModel.deleteempresasAsociadasById(Id);
-    res.redirect('admin/EmpresasAsociadas/empresasIndex');
+    res.redirect('/admin/empresasAsociadas');
 });
 
 router.get('/agregar', (req, res, next) => {
@@ -39,7 +39,7 @@ router.post('/agregar', async(req, res, next) => {
                 ImagenEmpresa: req.body.ImagenEmpresa
             }
             await empresasModel.insertempresasAsociadas(empresa);
-            res.redirect('admin/EmpresasAsocidas/empresasIndex');
+            res.redirect('/admin/empresasAsociadas');
         }
     }
     catch (error) {
@@ -54,7 +54,7 @@ router.post('/agregar', async(req, res, next) => {
 
 router.get('/modificar/:Id', async(req, res, next) => {
     let Id = req.params.Id;
-    let empresa = await empresasModel.getServicioById(Id);
+    let empresa = await empresasModel.getempresasAsociadasById(Id);
     res.render('admin/EmpresasAsociadas/editarEmpresa',{
         layout: 'admin/layout',
         empresa
@@ -69,8 +69,8 @@ router.post('/modificar', async(req, res, next) => {
             DescripcionEmpresa: req.body.DescripcionEmpresa,
             ImagenEmpresa: req.body.ImagenEmpresa
         }
-        await empresasModel.updateServicioById(Id, empresa);
-        res.redirect('admin/EmpresasAsociadas/empresasIndex');
+        await empresasModel.updateempresasAsociadasById(Id, empresa);
+        res.redirect('/admin/empresasAsociadas');
     }
     catch (error) {
         console.log(error);
