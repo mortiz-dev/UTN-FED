@@ -9,6 +9,8 @@ var app = express();
 require('dotenv').config();
 var session = require('express-session');
 
+var fileUpload = require('express-fileupload');
+
 var pool = require('./models/db');
 
 var loginRouter = require('./routes/admin/login');
@@ -26,6 +28,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: '/tmp/'
+}));
 
 app.use(session({
   secret: '12w3e4r5t6y7u8i9o0p',

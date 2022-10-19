@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var serviciosModel = require('./../../models/serviciosModel');
+var util = require('util');
+var cloudinary = require('cloudinary').v2;
+
+const uploader = util.promisify(cloudinary.uploader.upload);
 
 router.get('/', async function(req, res, next) {
     var servicios = await serviciosModel.getServicios();
@@ -24,7 +28,22 @@ router.get('/agregar', (req, res, next) => {
 });
 
 router.post('/agregar', async(req, res, next) => {
-    try{
+    try {
+        var img_id = '';
+        if (req.files && Object.keys(req.files).length > 0){
+            imagen = req.files.ImagenServicio;
+            img_id = (await uploader(imagen.tempFilePath)).public_id;
+        }
+        if (req.body.TituloServicio != "" && req.body.DescripcionServicio != "" && req.body.PrecioServicio != "") {
+            await serviciosModel.insertServicio(req.body, img_id);
+            res.redirect('/admin/novedades');
+        }
+    /*try{
+        var img_id = '';
+        if (req.files && Object.keys(req.files).length > 0) {
+            imagen = req.files.imagen;
+            img_id = (await uploader(imagen.tempFilePath)).public_id;
+        }
         if (req.body.TituloServicio == "" || req.body.DescripcionServicio == "" || req.body.ImagenServicio == "") {
             res.render('admin/agregar',{
                 layout: 'admin/layout',
@@ -36,11 +55,11 @@ router.post('/agregar', async(req, res, next) => {
             var servicio = {
                 TituloServicio: req.body.TituloServicio,
                 DescripcionServicio: req.body.DescripcionServicio,
-                ImagenServicio: req.body.ImagenServicio
+                ImagenServicio: img_id
             }
             await serviciosModel.insertServicio(servicio);
             res.redirect('/admin/novedades');
-        }
+        }*/
     }
     catch (error) {
         console.log(error);
