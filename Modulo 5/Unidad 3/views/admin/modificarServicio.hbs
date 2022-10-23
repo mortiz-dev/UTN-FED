@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-6 offset-3">
             <h3>Modificar servicio</h3>
-            <form method="post" action="/admin/novedades/modificar">
+            <form method="post" action="/admin/novedades/modificar" enctype="multipart/form-data">
                 <input type="hidden" name="Id" value="{{servicio.Id}}">
                 <div class="form-group">
                     <label for="TituloServicio">Título</label>
@@ -13,8 +13,14 @@
                     <textarea class="form-control" id="DescripcionServicio" name="DescripcionServicio" rows="3">{{servicio.DescripcionServicio}}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="ImagenServicio">Link a imagen</label>
-                    <input type="text" class="form-control" id="ImagenServicio" name="ImagenServicio" value="{{servicio.ImagenServicio}}">
+                    <label for="imagen">Link a imagen</label>
+                    <input type="file" class="form-control" id="imagen" name="imagen">
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" name="EliminarImagen" value="1"> Eliminar imagen
+                    </label>
+                    <input type="hidden" name="img_original" value="{{ servicios.img_id }}">
                 </div>
                 <button type="submit" class="btn btn-primary">Modificar</button>
             </form>

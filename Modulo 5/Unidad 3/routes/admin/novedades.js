@@ -5,6 +5,7 @@ var util = require('util');
 var cloudinary = require('cloudinary').v2;
 
 const uploader = util.promisify(cloudinary.uploader.upload);
+const destroy = util.promisify(cloudinary.uploader.destroy);
 
 router.get('/', async function(req, res, next) {
     var servicios = await serviciosModel.getServicios();
@@ -33,6 +34,10 @@ router.get('/', async function(req, res, next) {
 
 router.get('/eliminar/:Id', async(req, res, next) => {
     var Id = req.params.Id;
+    let servicio = await serviciosModel.getServicioById(Id);
+    if(servicio.img_id){
+        await destroy(servicio.img_id);
+    }
     await serviciosModel.deleteServicioById(Id);
     res.redirect('/admin/novedades');
 });
@@ -76,11 +81,27 @@ router.get('/modificar/:Id', async(req, res, next) => {
 
 router.post('/modificar', async(req, res, next) => {
     try{
+        let img_id = req.body.img_original;
+        let borrar_img_vieja = false;
+        if(req.body.img_delete === 1){
+            img_id = null;
+            borrar_img_vieja = true;
+        }
+        else{
+            if (req.files && Object.keys(req.files).length > 0){
+                imagen = req.files.imagen;
+                img_id = (await uploader(imagen.tempFilePath)).public_id;
+                borrar_img_vieja = true;
+            }
+        }
+        if(borrar_img_vieja && req.body.img_original){
+            await destroy(req.body.img_original);
+        }
         var Id = req.body.Id;
         var servicio = {
             TituloServicio: req.body.TituloServicio,
             DescripcionServicio: req.body.DescripcionServicio,
-            ImagenServicio: req.body.ImagenServicio
+            img_id
         }
         await serviciosModel.updateServicioById(Id, servicio);
         res.redirect('/admin/novedades');
