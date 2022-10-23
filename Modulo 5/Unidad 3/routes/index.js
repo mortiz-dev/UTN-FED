@@ -3,11 +3,29 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 var serviciosModel = require('./../models/serviciosModel');
 var empresasModel = require('./../models/empresasAsociadasModel');
+var cloudinary = require('cloudinary').v2;
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  var servicios = await serviciosModel.getServicios();
-  var empresas = await empresasModel.getempresasAsociadass();
+  servicios = await serviciosModel.getServicios();
+  servicios = servicios.splice(0,5);
+
+  servicios = servicios.map(servicio => {
+    if(servicio.img_id){
+        const imagen = cloudinary.image(servicio.img_id, {
+            width: 200,
+            height: 200,
+            crop: "fill"
+        });
+        return {...servicio, imagen};
+    }
+    else {
+        return {...servicio, imagen: ''};
+    }
+});
+
+
+  empresas = await empresasModel.getempresasAsociadass();
   res.render('index', {servicios, empresas});
 });
 

@@ -16,7 +16,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripción</th>
-                        <th scope="col">Link a imagen</th>
+                        <th scope="col">Imagen</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -26,7 +26,7 @@
                         <th scope="row">{{Id}}</th>
                         <td>{{TituloServicio}}</td>
                         <td>{{DescripcionServicio}}</td>
-                        <td>{{ImagenServicio}}</td>
+                        <td>{{{imagen}}}</td>
                         <td>
                             <a href="/admin/novedades/modificar/{{Id}}" class="btn btn-primary"> <i class="fa fa-edit"></i></a>
                             <a href="/admin/novedades/eliminar/{{Id}}" class="btn btn-danger"> <i class="fa fa-trash"></i></a>
